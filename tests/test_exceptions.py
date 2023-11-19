@@ -14,7 +14,7 @@ class TestExceptionScenarios:
         exception_page.add_row()
 
     @pytest.mark.exception
-    def test_element_not_interactable_exception(self, driver):
+    def test_element_not_intractable_exception(self, driver):
         exception_page = ExceptionPage(driver)
         exception_page.open()
         exception_page.add_row()

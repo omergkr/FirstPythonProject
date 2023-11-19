@@ -16,11 +16,18 @@ def driver(request):
     print(f"Creating {browser} driver...")
 
     if browser == "chrome":
-        my_driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        option = webdriver.ChromeOptions()
+        option.add_argument("start-maximized")
+        my_driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=option)
+
     elif browser == "firefox":
-        my_driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+        option = webdriver.FirefoxOptions()
+        option.add_argument("start-maximized")
+        my_driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=option)
     elif browser == "edge":
-        my_driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
+        option = webdriver.EdgeOptions()
+        option.add_argument("start-maximized")
+        my_driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=option)
     else:
         raise TypeError(f"Expected 'chrome', 'firefox' or 'edge', but got {browser}")
     # my_driver.implicitly_wait(10)
